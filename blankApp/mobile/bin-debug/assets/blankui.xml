@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:892a75e7b0a983af0d7b80330d4cecf9:6a3c387520ee7ddaa2756cc467067080:2adf666fbb8b7584c0144318b3de2d78$ -->
+<TextureAtlas imagePath="blankui.png">
+    <SubTexture name="color-black" x="3" y="519" width="20" height="20"/>
+    <SubTexture name="color-white" x="28" y="519" width="20" height="20"/>
+    <SubTexture name="opensans36" x="3" y="195" width="2042" height="64" frameX="-3" frameY="-3" frameWidth="2048" frameHeight="70"/>
+    <SubTexture name="opensans36semibold" x="3" y="451" width="2035" height="63" frameX="-3" frameY="-3" frameWidth="2048" frameHeight="69"/>
+    <SubTexture name="opensans72" x="3" y="264" width="2041" height="182" frameX="-3" frameY="-3" frameWidth="2048" frameHeight="188"/>
+    <SubTexture name="opensans72semibold" x="3" y="3" width="2042" height="187" frameX="-3" frameY="-3" frameWidth="2048" frameHeight="193"/>
+</TextureAtlas>

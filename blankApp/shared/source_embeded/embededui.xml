@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:ddbf59a4aa8193544fa6adf05a0280b2:dccb7314538d8d93922c3ba7e92ab3b0:987dffdb0888ae076efda83315d873f1$ -->
+<TextureAtlas imagePath="embededui.png">
+    <SubTexture name="logo" x="3" y="3" width="351" height="406"/>
+</TextureAtlas>
