@@ -9,3 +9,5 @@ This app flow assumes the use of the following:
 * BitmapFonts
 
 I use bitmaps as often as possible to help reduce drawcalls. You will need Texture Packager - download here: https://www.codeandweb.com/texturepacker
+
+Since this is a personal framework, use at your own risk, I can not offer support.
