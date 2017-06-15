@@ -5,11 +5,11 @@ package com.blankapp.fonts
 	import ganon.fonts.GanonFont;
 	import ganon.fonts.GanonFontManager;
 	
-	public class BlankFontManager extends GanonFontManager
+	public class BlankAppFontManager extends GanonFontManager
 	{
 		private var _strRoboto:String = "opensans";
 		
-		public function BlankFontManager()
+		public function BlankAppFontManager()
 		{
 			super();
 			

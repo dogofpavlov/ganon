@@ -1,27 +1,24 @@
 package com.blankapp.view
 {
 
-	import com.blankapp.assets.BlankAssets;
-	import com.blankapp.data.AppData;
-	import com.blankapp.env.ISizewiseEnv;
-	
-	import flash.utils.setTimeout;
+	import com.blankapp.assets.BlankAppAssets;
+	import com.blankapp.env.IBlankAppEnv;
 	
 	import ganon.assets.GanonAssets;
 	import ganon.core.Ganon;
 	import ganon.display.GanonNavigator;
 	import ganon.display.GanonRoot;
 	
-	public class BlankRoot extends GanonRoot
+	public class BlankAppRoot extends GanonRoot
 	{
 		
-		private var _swEnv:ISizewiseEnv;
+		private var _blankEnv:IBlankAppEnv;
 		//class visuals
 		
-		public function BlankRoot()
+		public function BlankAppRoot()
 		{
 			super();
-			this._swEnv = this._env as ISizewiseEnv;
+			this._blankEnv = this._env as IBlankAppEnv;
 		}
 		
 		override protected function _setup1Core():void{
@@ -29,7 +26,7 @@ package com.blankapp.view
 			
 			Ganon.ganon.statsShow();
 			//Finish with setup2
-			this._setup2AssetsNSplashScreen(new BlankAssets());
+			this._setup2AssetsNSplashScreen(new BlankAppAssets());
 		}
 		
 		override protected function _setup2AssetsNSplashScreen($assets:GanonAssets):void{
@@ -53,6 +50,9 @@ package com.blankapp.view
 		override protected function _assetsLoaded():void{
 			super._assetsLoaded();
 			trace("WE ARE READY TO GO");
+			
+			//Call an ANE Method
+			this._blankEnv.someANEMethod();
 			
 		
 		}

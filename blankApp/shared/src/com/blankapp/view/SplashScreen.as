@@ -1,6 +1,6 @@
 package com.blankapp.view
 {
-	import com.blankapp.assets.BlankAssets;
+	import com.blankapp.assets.BlankAppAssets;
 	
 	import ganon.display.GanonScreen;
 	import ganon.display.ImageRect;
@@ -14,8 +14,8 @@ package com.blankapp.view
 		{
 			super();
 			
-			var logo:ImageRect = new ImageRect(new Image(BlankAssets.getTexture("logo")));
-			logo.relativeScale(1.3);
+			var logo:ImageRect = new ImageRect(new Image(BlankAppAssets.getTexture("logo")));
+			logo.relativeScale(1);
 			this.addChild(logo);
 			logo.layoutData = new ALD(NaN,NaN,NaN,NaN,0,0);
 			

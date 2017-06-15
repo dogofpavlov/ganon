@@ -1,7 +1,7 @@
 package com.blankapp.assets
 {
-	import com.blankapp.fonts.BlankFontManager;
-	import com.blankapp.view.BlankRoot;
+	import com.blankapp.fonts.BlankAppFontManager;
+	import com.blankapp.view.BlankAppRoot;
 	
 	import flash.display.Bitmap;
 	
@@ -11,7 +11,7 @@ package com.blankapp.assets
 	import starling.textures.Texture;
 	import starling.textures.TextureAtlas;
 	
-	public class BlankAssets extends GanonAssets
+	public class BlankAppAssets extends GanonAssets
 	{
 		
 		[Embed(source="/embededui.png")]
@@ -24,14 +24,14 @@ package com.blankapp.assets
 			return assets.getTexture($textureID);	
 		}		
 		
-		public static function get assets():BlankAssets{
-			return (Starling.current.root as BlankRoot).assets as BlankAssets;			
+		public static function get assets():BlankAppAssets{
+			return (Starling.current.root as BlankAppRoot).assets as BlankAppAssets;			
 		}		
-		public static function get fonts():BlankFontManager{
-			return (Starling.current.root as BlankRoot).assets.fonts as BlankFontManager;
+		public static function get fonts():BlankAppFontManager{
+			return (Starling.current.root as BlankAppRoot).assets.fonts as BlankAppFontManager;
 		}
 		
-		public function BlankAssets()
+		public function BlankAppAssets()
 		{
 			super();
 			this._assetManager.addTextureAtlas("embededui",new TextureAtlas(Texture.fromBitmap(new embededui_png() as Bitmap) ,XML(new embededui_xml())));
@@ -40,7 +40,7 @@ package com.blankapp.assets
 		override protected function _assetsReady():void{
 			super._assetsReady();
 			
-			this._setupFontManager(new BlankFontManager());
+			this._setupFontManager(new BlankAppFontManager());
 		}
 		
 		/*
