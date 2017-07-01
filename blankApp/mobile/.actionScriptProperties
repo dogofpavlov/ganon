@@ -5,6 +5,7 @@
       <compilerSourcePathEntry kind="1" linkType="1" path="C:/Users/Ryan/Desktop/PROJECTS/_GANON/ganon/blankApp/shared/src"/>
       <compilerSourcePathEntry kind="1" linkType="1" path="C:/Users/Ryan/Desktop/PROJECTS/_GANON/ganon/blankApp/shared/source_assets"/>
       <compilerSourcePathEntry kind="1" linkType="1" path="C:/Users/Ryan/Desktop/PROJECTS/_GANON/ganon/blankApp/shared/source_embeded"/>
+      <compilerSourcePathEntry kind="1" linkType="1" path="C:/Users/Ryan/Desktop/PROJECTS/_GANON/ganon/source"/>
     </compilerSourcePath>
     <libraryPath defaultLinkType="0">
       <libraryPathEntry kind="4" path="">

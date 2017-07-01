@@ -24,6 +24,11 @@
 	</natures>
 	<linkedResources>
 		<link>
+			<name>[source path] source</name>
+			<type>2</type>
+			<location>C:/Users/Ryan/Desktop/PROJECTS/_GANON/ganon/source</location>
+		</link>
+		<link>
 			<name>[source path] source_assets</name>
 			<type>2</type>
 			<location>C:/Users/Ryan/Desktop/PROJECTS/_GANON/ganon/blankApp/shared/source_assets</location>

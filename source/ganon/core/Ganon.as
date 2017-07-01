@@ -4,8 +4,8 @@ package ganon.core
 	import flash.events.Event;
 	import flash.geom.Rectangle;
 	
-	import ganon.env.IGanonEnv;
 	import ganon.display.GanonRoot;
+	import ganon.env.IGanonEnv;
 	
 	import starling.core.Starling;
 	import starling.events.Event;
@@ -32,10 +32,6 @@ package ganon.core
 		//Core
 		private var _env:IGanonEnv;
 		private var _rootClass:Class;
-		
-		//Numbers
-		private var _numScale:Number;
-		private var _numUnScale:Number;
 		
 		//Starling
 		private var _starling:Starling;
@@ -98,7 +94,7 @@ package ganon.core
 		}
 		public function statsShow($hor:String="right", $ver:String="bottom"):void{
 			if(this._starling){
-				this._starling.showStatsAt($hor,$ver,this._numScale);
+				this._starling.showStatsAt($hor,$ver,this._env.scale);
 			}
 		}
 		
@@ -114,13 +110,13 @@ package ganon.core
 			
 			if ( screenWidth > screenHeight ){ //check real orientation
 				this._env.portrait=false;
-				this._numUnScale = (screenHeight / numDivider);
+				this._env.unscale = (screenHeight / numDivider);
 			}else{
 				this._env.portrait=true;
-				this._numUnScale = (screenWidth / numDivider);
+				this._env.unscale = (screenWidth / numDivider);
 			}
 			
-			this._numScale = 1/this._numUnScale;
+			this._env.scale = 1/this._env.unscale;
 			
 			var viewport:Rectangle = this._starling.viewPort;
 			
@@ -130,8 +126,8 @@ package ganon.core
 			
 			
 			//Update MainData Details
-			this._env.width = screenWidth * this._numScale;
-			this._env.height = screenHeight * this._numScale;
+			this._env.width = screenWidth * this._env.scale;
+			this._env.height = screenHeight * this._env.scale;
 			
 			
 			//Calc extra design space if any
@@ -157,13 +153,16 @@ package ganon.core
 		private function _onResize($event:flash.events.Event):void{
 			this.resize();
 		}
-		private function _onDeactivate($event:flash.events.Event):void{			
+		private function _onDeactivate($event:flash.events.Event):void{		
+			this._env.deactivated = true;
 			this._starling.stop();
 			this._env.stage.addEventListener(flash.events.Event.ACTIVATE, this._onActivate);
 		}		
-		private function _onActivate($event:flash.events.Event):void{
+		private function _onActivate($event:flash.events.Event):void{	
+			this._env.deactivated = false;
 			this._env.stage.removeEventListener(flash.events.Event.ACTIVATE, this._onActivate);
 			this._starling.start();
+			
 		}
 		
 		/*

@@ -12,29 +12,19 @@ package ganon.display
 		private var _origW:Number;
 		private var _origH:Number;
 		
-		public function ImageRect($image:Image, $autosize:Boolean=true)
+		public function ImageRect($texture:Texture, $autosize:Boolean=true)
 		{
 			super();
-			this._img = $image;
-			this.backgroundSkin = $image;
-			
-			this._origW = $image.width;
-			this._origH = $image.height;
-			
-			
-			if($autosize){
-				this.width = this._origW;
-				this.height = this._origH;
-			}
+			this.changeTexture($texture,$autosize);
 		}
 		
-		public function changeTexture($texture:Texture, $andSize:Boolean=true):void{
-			this._img.texture = $texture;
+		public function changeTexture($texture:Texture, $autoSize:Boolean=true):void{
+			this._img = new Image($texture);
 			this.backgroundSkin = this._img;
 			
 			this._origW = this._img.width;
 			this._origH = this._img.height;
-			if($andSize){
+			if($autoSize){
 				this.width = this._origW;
 				this.height = this._origH;				
 			}

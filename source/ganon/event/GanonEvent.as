@@ -5,6 +5,9 @@ package ganon.event
 	public class GanonEvent extends Event
 	{
 		
+		public static const DEACTIVATE:String = "MainEvent.onDeactivate";
+		public static const ACTIVATE:String = "MainEvent.onActivate";
+		
 		public static const SECTION_CHANGE:String = "MainEvent.onSectionChange";
 		public static const SECTION_BACK:String = "MainEvent.onSectionBack";
 		public static const TOGGLE_DRAWER:String = "MainEvent.onToggleDrawer";

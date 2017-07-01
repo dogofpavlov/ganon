@@ -18,7 +18,8 @@ package ganon.env
 		function get stage():Stage;
 		function get root():Sprite;
 		function get os():String;
-		function get osVer():String;
+		function get iosVer():String;
+		function get iosVer7AndAbove():Boolean;
 		function get mobile():Boolean;
 		function get desktop():Boolean;
 		function get web():Boolean;
@@ -41,10 +42,18 @@ package ganon.env
 		function set height($value:Number):void;
 		function get height():Number;
 		
+		
+		function set scale($value:Number):void;
+		function get scale():Number;
+		function set unscale($value:Number):void;
+		function get unscale():Number;
+		
 		function get width2():Number;
 		function get height2():Number;
 		
 		
+		function set deactivated($value:Boolean):void;
+		function get deactivated():Boolean;
 		
 	}
 }

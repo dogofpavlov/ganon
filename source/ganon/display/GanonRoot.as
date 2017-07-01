@@ -2,7 +2,9 @@ package ganon.display
 {
 	import ganon.assets.GanonAssets;
 	import ganon.core.Ganon;
+	import ganon.dispatcher.MainDispatcher;
 	import ganon.env.IGanonEnv;
+	import ganon.event.GanonEvent;
 	
 	import starling.display.Sprite;
 	import starling.events.Event;
@@ -23,6 +25,11 @@ package ganon.display
 			super();
 			this._env = Ganon.ganon.env;
 			this.addEventListener(Event.ADDED_TO_STAGE, this._initialize);
+			
+			
+			MainDispatcher.addEventListener(GanonEvent.DEACTIVATE, this._onDeactivate);
+			MainDispatcher.addEventListener(GanonEvent.ACTIVATE, this._onActivate);
+			
 		}
 		private function _initialize($event:Event):void{
 			this.removeEventListener(Event.ADDED_TO_STAGE, this._initialize);			
@@ -88,10 +95,17 @@ package ganon.display
 		/*
 		EVENT HANLDERS
 		*/
-		private function _onDrawerOpen($event:Event):void{
+		protected function _onDrawerOpen($event:Event):void{
 		
 		}
-		private function _onDrawerClose($event:Event):void{
+		protected function _onDrawerClose($event:Event):void{
+			
+		}
+		
+		protected function _onActivate($event:GanonEvent):void{
+			
+		}
+		protected function _onDeactivate($event:GanonEvent):void{
 			
 		}
 		

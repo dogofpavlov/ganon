@@ -283,6 +283,9 @@ package ganon.display
 			return this._strPrevSection;
 		}
 		
+		public function get navigator():ScreenNavigator{
+			return this._navigator;
+		}
 		
 	}
 }

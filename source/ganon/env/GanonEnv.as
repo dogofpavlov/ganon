@@ -6,10 +6,11 @@ package ganon.env
 	import flash.system.Capabilities;
 	import flash.utils.getTimer;
 	
+	import ganon.dispatcher.MainDispatcher;
+	import ganon.event.GanonEvent;
+	
 	import starling.utils.AssetManager;
 	
-	
-
 	public class GanonEnv implements IGanonEnv
 	{
 		
@@ -18,8 +19,6 @@ package ganon.env
 		public static const OS_Android:String = "Android";
 		public static const OS_iOS:String = "iOS";
 		
-		public static const OS_iOS_6_and_below:String = "6"; //ios top black bar
-		public static const OS_iOS_7_and_above:String = "7"; //ios top floating bar
 		
 		//Core
 		protected var _config:GanonEnvConfig;		
@@ -32,7 +31,8 @@ package ganon.env
 		
 		//Strings
 		private var _strOS:String;
-		private var _strOSVer:String;
+		private var _strIOSVer:String;
+		private var _bolIOSVer7AndAbove:Boolean;
 		
 		//Booleans
 		private var _bolMobile:Boolean;
@@ -44,9 +44,11 @@ package ganon.env
 		private var _bolMac:Boolean;
 		private var _bolSmallDevice:Boolean;
 		private var _bolPortrait:Boolean;
-		
+		private var _bolDeactivated:Boolean;
 		
 		//Numbers		
+		private var _numScale:Number;
+		private var _numUnScale:Number;
 		private var _numWidth:Number;
 		private var _numHeight:Number;
 		private var _numWidth2:Number;
@@ -59,6 +61,8 @@ package ganon.env
 			this._root = $root;
 			this._stage = $root.stage;
 			this._config = $config;
+			
+			this._bolDeactivated=false;//cause you always start...activated
 			
 			//Setup Stage
 			if($config.initFullscreen){
@@ -87,14 +91,13 @@ package ganon.env
 					this._bolIOS=true;
 					this._strOS = OS_iOS;
 					
-					var iOSVer:String = strOS.substr(10,1);
-					switch(iOSVer){
-						case "7":
-							this._strOSVer = OS_iOS_7_and_above;
-							break;
-						default:
-							this._strOSVer = OS_iOS_6_and_below;
+					this._strIOSVer = strOS.substr(10,1);
+					if(Number(this._strIOSVer)>=7){
+						this._bolIOSVer7AndAbove=true;
+					}else{
+						this._bolIOSVer7AndAbove=false;
 					}
+					
 					if(this._bolSmallDevice){
 						this._numIOSStatusBarHeight = 35;
 					}else{
@@ -184,14 +187,21 @@ package ganon.env
 		/**
 		 * Operating System
 		 */
-		public function get os():String{
-			return this._strOS;
+		public function get iosVer():String{
+			return this._strIOSVer;
 		}
 		/**
-		 * Operating System Versopm
+		 * iOS Version
 		 */
-		public function get osVer():String{
-			return this._strOSVer;
+		public function get iosVer7AndAbove():Boolean{
+			return this._bolIOSVer7AndAbove;
+		}
+		
+		/**
+		 * iOS Version
+		 */
+		public function get os():String{
+			return this._strOS;
 		}
 		/**
 		 * Is a mobile device
@@ -253,6 +263,33 @@ package ganon.env
 		}
 		
 		/**
+		 * Scale for this device based on design width/height
+		 */
+		public function set scale($value:Number):void{
+			this._numScale = $value;
+		}
+		/**
+		 * Scale for this device based on design width/height
+		 */
+		public function get scale():Number{
+			return this._numScale;
+		}
+		
+		/**
+		 * Unscale for this device based on design width/height
+		 */
+		public function set unscale($value:Number):void{
+			this._numUnScale = $value;
+		}
+		/**
+		 * Unscale for this device based on design width/height
+		 */
+		public function get unscale():Number{
+			return this._numUnScale;
+		}
+		
+		
+		/**
 		 * scaled width determined by ganon
 		 */
 		public function set width($value:Number):void{
@@ -285,23 +322,10 @@ package ganon.env
 		/**
 		 * scaled half width determined by ganon
 		 */
-		public function set width2($value:Number):void{
-			this._numWidth2 = $value;
-		}
-		/**
-		 * scaled half width determined by ganon
-		 */
 		public function get width2():Number{
 			return this._numWidth2;
 		}
 		
-		
-		/**
-		 * scaled half height determined by ganon
-		 */
-		public function set height2($value:Number):void{
-			this._numHeight2 = $value;
-		}
 		
 		/**
 		 * scaled half height determined by ganon
@@ -322,6 +346,21 @@ package ganon.env
 		 */
 		public function get extraDesignSpace():Number{
 			return this._numExtraDesignSpace;
+		}
+		
+		
+		/**
+		 * when the app is deactivated
+		 */
+		public function set deactivated($value:Boolean):void{
+			this._bolDeactivated = $value;
+			MainDispatcher.dispatchEvent(new GanonEvent($value?GanonEvent.DEACTIVATE:GanonEvent.ACTIVATE,this));
+		}
+		/**
+		 * when the app is deactivated
+		 */
+		public function get deactivated():Boolean{
+			return this._bolDeactivated;
 		}
 		
 	}

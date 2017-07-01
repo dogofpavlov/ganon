@@ -4,7 +4,7 @@ package ganon.util
 	
 	public class SmartLoader extends Loader
 	{
-		
+		public var data:Object;
 		public var loaded:Boolean=false;
 		public var complete:Function;
 		

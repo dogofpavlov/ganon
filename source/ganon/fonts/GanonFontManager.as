@@ -78,8 +78,7 @@ package ganon.fonts
 			var alias:String = String($font+""+$color+""+$size+""+$style+""+$align);
 			
 			if(this._dictFontFunctions[alias]){
-				func = this._dictFontFunctions[alias];
-				
+				func = this._dictFontFunctions[alias];				
 			}else{
 				func = function():ITextRenderer{
 					return createTextRenderer($font,$color,$size,$style,$align,$batch,$forced);					

@@ -1,10 +1,17 @@
 package ganon.assets
 {
+	import flash.display.BitmapData;
+	import flash.display.LoaderInfo;
+	import flash.display.Sprite;
+	import flash.events.Event;
+	import flash.events.IOErrorEvent;
+	import flash.net.URLRequest;
 	import flash.utils.Dictionary;
 	
 	import ganon.core.Ganon;
 	import ganon.env.IGanonEnv;
 	import ganon.fonts.GanonFontManager;
+	import ganon.util.SmartLoader;
 	
 	import starling.textures.Texture;
 	import starling.utils.AssetManager;
@@ -24,10 +31,13 @@ package ganon.assets
 		//Function Callbacks
 		protected var _funcAssetsLoaded:Function;
 		
+		protected var _supInfoPhotoTexture:Texture;
+		
 		
 		public function GanonAssets()
 		{
 			this._env = Ganon.ganon.env;
+			this._dictRectangles = new Dictionary();
 			this._assetManager = new AssetManager();
 		}
 		
@@ -46,6 +56,7 @@ package ganon.assets
 		public function getTexture($textureID:String):Texture{
 			return this._assetManager.getTexture($textureID);
 		}
+		
 		/**
 		 * This override must call "_setupFontManager" at the end.
 		 */
